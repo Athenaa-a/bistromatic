@@ -36,6 +36,9 @@ char *eval_expr(char const *base, char const *ops,
 //lib
 void my_putchar(char const c);
 void my_putstr(char const *str);
+void my_put_error(char const *str);
+char *my_strcpy(char *dest, const char *src);
+char *my_strdup(const char *src);
 int my_strlen(char const *str);
 int my_atoi(char const *);
 

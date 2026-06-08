@@ -2,3 +2,4 @@ calc
 *.a
 *.o
 *.txt
+.vscode

@@ -7,10 +7,9 @@
 
 #include "bistromatic.h"
 
-int my_put_error(char *str)
+void my_put_error(char const *str)
 {
     if (!str)
-        return 1;
+        return;
     write(2, str, my_strlen(str));
-    return 1;
 }
