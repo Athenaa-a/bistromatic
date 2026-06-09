@@ -6,11 +6,32 @@
 */
 
 #include "bistromatic.h"
+#include <stdio.h>
+
+char *get_priority_result(char *arg)
+{
+    char **arr = my_str_to_word_array(arg, "*/%\n");
+
+    if (!arr || !arr[0])
+        return NULL;
+    if (!arr[1])
+        return arr[0];
+    return NULL;
+}
 
 char *eval_expr(char const *base, char const *ops,
-    char const *expr, unsigned int size)
+    char *expr, unsigned int size)
 {
-    char *str = my_strdup(expr);
+    char **arr = my_str_to_word_array(expr, "+-'\n");
+    int len = 0;
 
-    return str;
+    if (!arr || !arr[0])
+        return NULL;
+    len = my_strlen_tab(arr);
+    for (int i = 0; i < len; i++) {
+        arr[i] = get_priority_result(arr[i]);
+        my_putstr(arr[i]);
+        my_putstr("\n");
+    }
+    return "nope";
 }

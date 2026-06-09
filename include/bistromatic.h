@@ -38,11 +38,13 @@ void my_putchar(char const c);
 void my_putstr(char const *str);
 void my_put_error(char const *str);
 void *my_realloc(void *pointer, size_t old_size, size_t new_size);
+char **my_str_to_word_array(char *buf, char *sep);
 char *my_strcpy(char *dest, const char *src);
 char *my_strdup(const char *src);
 int my_strlen(char const *str);
 int my_atoi(char const *);
 char *my_revstr(char *str);
+char *my_int_to_str(int nb);
 
 //parsing
 int calc_occurences(char *expr);

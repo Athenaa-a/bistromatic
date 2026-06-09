@@ -1,64 +1,66 @@
 /*
-** EPITECH PROJECT, 2026
-** Mini-Shell-1
+** EPITECH PROJECT, 2025
+** my_radar
 ** File description:
 ** my_str_to_word_array
 */
 
+#include <stdbool.h>
 #include "bistromatic.h"
 
-static int is_sep(char c)
+static bool is_sep(char c, char *sep)
 {
-    return c == ' ' || c == '\t' || c == '\n';
-}
-
-static int count_words(const char *str)
-{
-    int count = 0;
-    int i;
-
-    for (i = 0; str[i]; i++) {
-        if (!is_sep(str[i]) && (i == 0 || is_sep(str[i - 1])))
-            count++;
+    for (int i = 0; sep[i] != '\0'; i++) {
+        if (c == sep[i])
+            return true;
     }
-    return count;
+    return false;
 }
 
-static char *dup_word(const char *str, int start, int end)
+int count_word(char *buf, char *sep)
 {
-    char *word;
-    int i;
+    int count_nb_word = 0;
 
-    word = malloc(end - start + 1);
+    for (int i = 0; buf[i]; i++) {
+        if (!is_sep(buf[i], sep) && is_sep(buf[i + 1], sep) || !buf[i + 1])
+            count_nb_word++;
+    }
+    return count_nb_word;
+}
+
+char *fill_word(char *buf, char *sep, int *k)
+{
+    int size_word = 0;
+    char *word;
+
+    while (buf[*k] != '\0' && is_sep(buf[*k], sep))
+        (*k)++;
+    if (buf[*k] == '\0')
+        return NULL;
+    while (buf[*k + size_word] != '\0' && !is_sep(buf[*k + size_word], sep))
+        size_word++;
+    word = malloc(sizeof(char) * (size_word + 1));
     if (!word)
         return NULL;
-    for (i = 0; i < end - start; i++) {
-        word[i] = str[start + i];
+    for (int i = 0; i < size_word; i++) {
+        word[i] = buf[*k];
+        (*k)++;
     }
-    word[i] = '\0';
+    word[size_word] = '\0';
     return word;
 }
 
-char **my_str_to_word_array(const char *str)
+char **my_str_to_word_array(char *buf, char *sep)
 {
-    char **tab;
-    int start = -1;
-    int w = 0;
+    int k = 0;
+    int nb_word = count_word(buf, sep);
+    char **arr = malloc(sizeof(char *) * (nb_word + 1));
 
-    tab = malloc(sizeof(char *) * (count_words(str) + 1));
-    if (!tab)
+    if (arr == NULL)
         return NULL;
-    for (int i = 0;; i++) {
-        if (str[i] && !is_sep(str[i]) && start < 0)
-            start = i;
-        if ((is_sep(str[i]) || !str[i]) && start >= 0) {
-            tab[w] = dup_word(str, start, i);
-            w++;
-            start = -1;
-        }
-        if (!str[i])
-            break;
+    for (int i = 0; i < nb_word; i++) {
+        arr[i] = fill_word(buf, sep, &k);
     }
-    tab[w] = NULL;
-    return tab;
+    arr[nb_word] = NULL;
+    return arr;
 }

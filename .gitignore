@@ -1,5 +1,7 @@
 calc
+a.out
 *.a
 *.o
 *.txt
 .vscode
+test_*.c
