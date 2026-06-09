@@ -37,6 +37,7 @@ char *eval_expr(char const *base, char const *ops,
 void my_putchar(char const c);
 void my_putstr(char const *str);
 void my_put_error(char const *str);
+void *my_realloc(void *pointer, size_t old_size, size_t new_size);
 char *my_strcpy(char *dest, const char *src);
 char *my_strdup(const char *src);
 int my_strlen(char const *str);

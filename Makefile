@@ -20,6 +20,7 @@ SRC =   ./lib/my/my_put_nbr.c \
 		./lib/my/my_strchr.c \
 		./lib/my/my_strcpy.c \
 		./lib/my/my_strdup.c \
+		./lib/my/my_realloc.c \
 		./lib/my/my_strcat.c \
 		./lib/my/my_getnbr.c \
 		./lib/my/my_atoi.c \
