@@ -23,8 +23,11 @@ SRC =   ./lib/my/my_put_nbr.c \
 		./lib/my/my_strcat.c \
 		./lib/my/my_getnbr.c \
 		./lib/my/my_atoi.c \
+		./lib/my/my_revstr.c \
 		./src/main.c \
 		./src/eval_expr.c \
+		./src/handle_parenthesis.c \
+
 
 OBJ =	$(SRC:.c=.o)
 
