@@ -30,8 +30,13 @@
     #define SYNTAX_ERROR_MSG "syntax error"
     #define ERROR_MSG "error"
 
-char *eval_expr(char const *base, char const *ops,
-    char const *expr, unsigned int size);
+typedef struct {
+    char *last_prio;
+    char *first_prio;
+} info_t;
+
+char *eval_expr(char const *base, char *ops,
+    char *expr, unsigned int size);
 
 //lib
 void my_putchar(char const c);
@@ -45,6 +50,8 @@ int my_strlen(char const *str);
 int my_atoi(char const *);
 char *my_revstr(char *str);
 char *my_int_to_str(int nb);
+char *my_strncpy(char *dest, char const *src, int n);
+int my_strlen_tab(char **tab);
 
 //parsing
 int calc_occurences(char *expr);
