@@ -30,13 +30,18 @@
     #define SYNTAX_ERROR_MSG "syntax error"
     #define ERROR_MSG "error"
 
+typedef enum {
+    OPN,
+    CLS,
+    ADD,
+    SUB
+} op_t;
+
 typedef struct {
     char *last_prio;
     char *first_prio;
+    op_t *last_op;
 } info_t;
-
-char *eval_expr(char const *base, char *ops,
-    char *expr, unsigned int size);
 
 //lib
 void my_putchar(char const c);
@@ -54,10 +59,13 @@ char *my_strncpy(char *dest, char const *src, int n);
 int my_strlen_tab(char **tab);
 
 //calcul
-char *calc_subtraction(char a[], char b[], char *ops);
-char *calc_addition(char a[], char b[], char *ops);
+char *calc_substraction(char a[], char b[]);
+char *calc_addition(char a[], char b[]);
 
 //parsing
 int calc_occurences(char *expr);
+char *eval_expr(char const *base, char *ops,
+    char *expr, unsigned int size);
+op_t *get_last_op(char *expr, char *ops);
 
 #endif

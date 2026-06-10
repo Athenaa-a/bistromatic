@@ -28,17 +28,20 @@ SRC =   ./lib/my/my_put_nbr.c \
 		./lib/my/my_revstr.c \
 		./lib/my/my_str_to_word_array.c \
 		./src/main.c \
-		./src/eval_expr.c \
+		./src/engine/eval_expr.c \
+		./src/engine/get_ops.c \
 		./src/handle_parenthesis.c \
 		./src/handle_addition.c \
-		./src/handle_subtraction.c \
+		./src/handle_substraction.c \
 
 
 OBJ =	$(SRC:.c=.o)
 
-CFLAGS = -I./include -g
+CFLAGS = -I./include
 
-all : $(OBJ)
+all : $(NAME)
+
+$(NAME) : $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean :
