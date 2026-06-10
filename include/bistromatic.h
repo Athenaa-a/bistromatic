@@ -46,6 +46,10 @@ int my_atoi(char const *);
 char *my_revstr(char *str);
 char *my_int_to_str(int nb);
 
+//calcul
+char *calc_subtraction(char a[], char b[], char *ops);
+char *calc_addition(char a[], char b[], char *ops);
+
 //parsing
 int calc_occurences(char *expr);
 

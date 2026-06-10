@@ -28,6 +28,8 @@ SRC =   ./lib/my/my_put_nbr.c \
 		./src/main.c \
 		./src/eval_expr.c \
 		./src/handle_parenthesis.c \
+		./src/handle_addition.c \
+		./src/handle_subtraction.c \
 
 
 OBJ =	$(SRC:.c=.o)
