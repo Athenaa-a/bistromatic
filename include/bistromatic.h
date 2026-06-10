@@ -53,6 +53,10 @@ char *my_int_to_str(int nb);
 char *my_strncpy(char *dest, char const *src, int n);
 int my_strlen_tab(char **tab);
 
+//calcul
+char *calc_subtraction(char a[], char b[], char *ops);
+char *calc_addition(char a[], char b[], char *ops);
+
 //parsing
 int calc_occurences(char *expr);
 
