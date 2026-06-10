@@ -61,6 +61,12 @@ int my_strlen_tab(char **tab);
 //calcul
 char *calc_substraction(char a[], char b[]);
 char *calc_addition(char a[], char b[]);
+char *my_strcat(char *dest, const char *src);
+
+//calcul
+char *calc_subtraction(char a[], char b[]);
+char *calc_addition(char a[], char b[]);
+char *calc_multiplication(char a[], char b[]);
 
 //parsing
 int calc_occurences(char *expr);
