@@ -8,14 +8,27 @@
 #include "bistromatic.h"
 #include <stdio.h>
 
+void free_tab(char **arr)
+{
+    if (!arr)
+        return;
+    for (int i = 0; arr[i]; i++)
+        free(arr[i]);
+    free(arr);
+}
+
 char *get_priority_result(info_t *info, char *arg)
 {
     char **arr = my_str_to_word_array(arg, info->first_prio);
+    char *res;
 
     if (!arr || !arr[0])
         return NULL;
-    if (!arr[1])
-        return arr[0];
+    if (!arr[1]) {
+        res = my_strdup(arr[0]);
+        free_tab(arr);
+        return res;
+    }
     return NULL;
 }
 
@@ -40,15 +53,21 @@ char *get_last_caluls(char const *base, info_t *info,
         if (!res)
             return NULL;
     }
+    free_tab(arr);
     return res;
 }
 
 static void free_info(info_t *info)
 {
+    if (!info)
+        return;
     if (info->last_prio)
         free(info->last_prio);
     if (info->first_prio)
         free(info->first_prio);
+    if (info->last_op)
+        free(info->last_op);
+    free(info);
 }
 
 static info_t *set_info(char *ops, char *expr)
