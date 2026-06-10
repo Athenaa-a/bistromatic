@@ -45,8 +45,11 @@ int my_strlen(char const *str);
 int my_atoi(char const *);
 char *my_revstr(char *str);
 char *my_int_to_str(int nb);
+char *my_strcat(char *dest, const char *src);
+int my_int_len(int nb);
 
 //parsing
 int calc_occurences(char *expr);
+int bistromatic(int ac, char **av);
 
 #endif
