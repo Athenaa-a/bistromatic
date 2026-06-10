@@ -45,10 +45,12 @@ int my_strlen(char const *str);
 int my_atoi(char const *);
 char *my_revstr(char *str);
 char *my_int_to_str(int nb);
+char *my_strcat(char *dest, const char *src);
 
 //calcul
-char *calc_subtraction(char a[], char b[], char *ops);
-char *calc_addition(char a[], char b[], char *ops);
+char *calc_subtraction(char a[], char b[]);
+char *calc_addition(char a[], char b[]);
+char *calc_multiplication(char a[], char b[]);
 
 //parsing
 int calc_occurences(char *expr);
