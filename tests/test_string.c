@@ -59,24 +59,24 @@ Test(addition, different_length)
     free(res);
 }
 
-Test(soustraction, simple)
+Test(substraction, simple)
 {
     char a[] = "8";
     char b[] = "3";
 
-    char *res = calc_subtraction(a, b);
+    char *res = calc_substraction(a, b);
 
     cr_assert_not_null(res, "Result must not be NULL");
     cr_assert_str_eq(res, "5", "8 - 3 must equal 5");
     free(res);
 }
 
-Test(soustraction, zero_as_result)
+Test(substraction, zero_as_result)
 {
     char a[] = "7";
     char b[] = "7";
 
-    char *res = calc_subtraction(a, b);
+    char *res = calc_substraction(a, b);
 
     cr_assert_not_null(res, "Result must not be NULL");
     cr_assert_str_eq(res, "0", "7 - 7 must equal 0");
