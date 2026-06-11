@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *carry_handling(int carry, int idx, char *res)
+static char *carry_handling(int carry, int idx, char *res)
 {
     if (carry) {
         res = my_realloc(res, idx, idx + 2);
@@ -21,7 +21,13 @@ char *carry_handling(int carry, int idx, char *res)
     return res;
 }
 
-char *loop_for_zeros(char *res, int len, char a[], char b[])
+void fill_res(char *res, int idx, int temp)
+{
+    res[idx] = '0' + temp;
+    res[idx + 1] = '\0';
+}
+
+static char *loop_for_zeros(char *res, int len, char a[], char b[])
 {
     int carry = 0;
     int zero_a;
@@ -29,22 +35,23 @@ char *loop_for_zeros(char *res, int len, char a[], char b[])
     int idx = 0;
     int temp = 0;
 
-    for (int i = 0; i < len; i++) {
-        zero_a = (i < my_strlen(a)) ? a[i] - '0' : 0;
-        zero_b = (i < my_strlen(b)) ? b[i] - '0' : 0;
-        temp = zero_a - zero_b + carry;
-        carry = temp / 10;
-        temp = temp % 10;
+    for (; idx < len; idx++) {
+        zero_a = (idx < my_strlen(a)) ? a[idx] - '0' : 0;
+        zero_b = (idx < my_strlen(b)) ? b[idx] - '0' : 0;
+        temp = zero_a - zero_b - carry;
+        carry = 0;
+        if (temp < 0) {
+            temp = 10 - temp * -1;
+            carry++;
+        }
         res = my_realloc(res, idx, idx + 2);
-        res[idx] = '0' - temp;
-        res[idx + 1] = '\0';
-        idx++;
+        fill_res(res, idx, temp);
     }
     res = carry_handling(carry, idx, res);
     return res;
 }
 
-char *calc_subtraction(char a[], char b[], char *ops)
+char *calc_substraction(char a[], char b[])
 {
     int len = 0;
     char *res = NULL;

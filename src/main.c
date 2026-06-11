@@ -51,6 +51,7 @@ int main(int ac, char **av)
 {
     unsigned int size;
     char *expr;
+    char *res = NULL;
 
     if (ac != 4) {
         my_put_error("Usage: ");
@@ -62,6 +63,8 @@ int main(int ac, char **av)
     check_ops(av[2]);
     size = my_atoi(av[3]);
     expr = get_expr(size);
-    my_putstr(eval_expr(av[1], av[2], expr, size));
+    res = eval_expr(av[1], av[2], expr, size);
+    my_putstr(res);
+    free(res);
     return (EXIT_SUCCESS);
 }

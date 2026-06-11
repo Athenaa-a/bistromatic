@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *carry_handling(int carry, int idx, char *res)
+static char *carry_handling(int carry, int idx, char *res)
 {
     if (carry) {
         res = my_realloc(res, idx, idx + 2);
@@ -21,7 +21,7 @@ char *carry_handling(int carry, int idx, char *res)
     return res;
 }
 
-char *loop_for_zeros(char *res, int len, char a[], char b[])
+static char *loop_for_zeros(char *res, int len, char a[], char b[])
 {
     int carry = 0;
     int zero_a;
@@ -44,7 +44,7 @@ char *loop_for_zeros(char *res, int len, char a[], char b[])
     return res;
 }
 
-char *calc_addition(char a[], char b[], char *ops)
+char *calc_addition(char a[], char b[])
 {
     int len = 0;
     char *res = NULL;

@@ -19,19 +19,21 @@ SRC =   ./lib/my/my_put_nbr.c \
 		./lib/my/my_putchar.c \
 		./lib/my/my_strchr.c \
 		./lib/my/my_strcpy.c \
+		./lib/my/my_strncpy.c \
 		./lib/my/my_strdup.c \
 		./lib/my/my_realloc.c \
 		./lib/my/my_strcat.c \
 		./lib/my/my_getnbr.c \
 		./lib/my/my_atoi.c \
-		./lib/my/my_str_to_word_array.c \
 		./lib/my/my_revstr.c \
+		./lib/my/my_str_to_word_array.c \
 		./src/main.c \
-		./src/eval_expr.c \
+		./src/engine/eval_expr.c \
+		./src/engine/get_ops.c \
 		./src/handle_parenthesis.c \
 		./src/handle_addition.c \
-		./src/handle_subtraction.c \
 		./src/handle_signs.c \
+		./src/handle_substraction.c \
 		./src/handle_multiplication.c \
 		./src/bistromatic.c
 
@@ -44,7 +46,9 @@ TESTS = $(TESTS_SRC:.c=.o)
 
 FILTERING = $(filter-out ./src/main.o, $(OBJ))
 
-all : $(OBJ)
+all : $(NAME)
+
+$(NAME) : $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean :
