@@ -34,13 +34,17 @@ typedef enum {
     OPN,
     CLS,
     ADD,
-    SUB
+    SUB,
+    MUL,
+    DIV,
+    MOD
 } op_t;
 
 typedef struct {
     char *last_prio;
     char *first_prio;
     op_t *last_op;
+    op_t *first_op;
 } info_t;
 
 //lib
@@ -65,14 +69,16 @@ char *my_strcat(char *dest, const char *src);
 int my_strlen_tab(char **tab);
 
 //calcul
-char *calc_subtraction(char a[], char b[]);
+char *calc_substraction(char a[], char b[]);
 char *calc_addition(char a[], char b[]);
 char *calc_multiplication(char a[], char b[]);
 
 //parsing
 int calc_occurences(char *expr);
-char *eval_expr(char const *base, char *ops,
-    char *expr, unsigned int size);
+char *eval_expr(char *ops, char *expr);
 op_t *get_last_op(char *expr, char *ops);
+op_t *get_first_op(char *expr, char *ops);
+
+int bistromatic(int ac, char **av);
 
 #endif

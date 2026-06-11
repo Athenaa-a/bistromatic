@@ -62,6 +62,6 @@ int bistromatic(int ac, char **av)
     check_ops(av[2]);
     size = my_atoi(av[3]);
     expr = get_expr(size);
-    my_putstr(eval_expr(av[1], av[2], expr, size));
+    my_putstr(eval_expr(av[2], expr));
     return (EXIT_SUCCESS);
 }
