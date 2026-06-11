@@ -31,7 +31,7 @@
     #define ERROR_MSG "error"
 
 char *eval_expr(char const *base, char const *ops,
-    char const *expr, unsigned int size);
+    char *expr, unsigned int size);
 
 //lib
 void my_putchar(char const c);
@@ -46,6 +46,7 @@ int my_atoi(char const *);
 char *my_revstr(char *str);
 char *my_int_to_str(int nb);
 char *my_strcat(char *dest, const char *src);
+int my_strlen_tab(char **tab);
 
 //calcul
 char *calc_subtraction(char a[], char b[]);

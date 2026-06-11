@@ -4,4 +4,5 @@ a.out
 *.o
 *.txt
 .vscode
-test_*.c
+*.gcda
+*.gcno

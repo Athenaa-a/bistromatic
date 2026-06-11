@@ -22,7 +22,7 @@ int count_word(char *buf, char *sep)
     int count_nb_word = 0;
 
     for (int i = 0; buf[i]; i++) {
-        if (!is_sep(buf[i], sep) && is_sep(buf[i + 1], sep) || !buf[i + 1])
+        if ((!is_sep(buf[i], sep) && is_sep(buf[i + 1], sep)) || (!buf[i + 1]))
             count_nb_word++;
     }
     return count_nb_word;
